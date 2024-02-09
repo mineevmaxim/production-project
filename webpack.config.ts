@@ -6,7 +6,7 @@ import path from "path";
 export default (env: BuildEnv) => {
     const paths: BuildPaths = {
         build: path.resolve(__dirname, 'build'),
-        entry: path.resolve(__dirname, 'src', 'index.ts'),
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
         html: path.resolve(__dirname, 'public', 'index.html'),
     }
 
