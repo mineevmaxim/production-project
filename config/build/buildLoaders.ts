@@ -1,7 +1,6 @@
-import webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import {BuildOptions} from "./types/config";
-import path from "path";
+import type webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { type BuildOptions } from './types/config';
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     const fileLoader = {
@@ -9,21 +8,21 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         use: [
             {
                 loader: 'file-loader',
-            }
-        ]
-    }
+            },
+        ],
+    };
 
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
-    }
+    };
 
     const cssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
-            options.isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+            options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
@@ -31,10 +30,10 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
                             ? '[path][name]__[local]'
                             : '[hash:base64:8]',
                     },
-                }
+                },
             },
-            "sass-loader",
-        ]
+            'sass-loader',
+        ],
     };
 
     const typescriptLoader = {
@@ -47,22 +46,22 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         test: /\.(js|tsx|jsx)$/,
         exclude: /node_modules/,
         use: {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
                 plugins: [
                     [
-                        "i18next-extract",
+                        'i18next-extract',
                         {
-                            "nsSeparator": "~",
+                            nsSeparator: '~',
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: true,
-                        }
+                        },
                     ],
-                ]
-            }
-        }
-    }
+                ],
+            },
+        },
+    };
 
     return [
         babelLoader,
