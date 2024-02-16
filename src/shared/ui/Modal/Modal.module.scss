@@ -35,3 +35,9 @@
         transform: scale(1);
     }
 }
+
+.isClosing {
+    .content {
+        transform: scale(0.5);
+    }
+}
