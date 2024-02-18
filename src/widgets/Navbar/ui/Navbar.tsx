@@ -33,7 +33,7 @@ export const Navbar = ({ className }: NavbarProps) => {
                 isOpen={isAuthModal}
                 onClose={onToggleModal}
             >
-                auth form
+                {t('auth form')}
             </Modal>
         </div>
     );

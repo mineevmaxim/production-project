@@ -12,5 +12,8 @@
   "О сайте": "О сайте",
   "toggle": "toggle",
   "Короткий язык": "Ru",
-  "Войти": "Войти"
+  "Войти": "Войти",
+  "increment": "increment",
+  "decrement": "decrement",
+  "auth form": "auth form"
 }
