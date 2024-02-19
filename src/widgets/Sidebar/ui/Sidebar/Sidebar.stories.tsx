@@ -9,6 +9,7 @@ export default {
     title: 'widget/Sidebar',
     component: Sidebar,
     argTypes: {
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof Sidebar>;
 

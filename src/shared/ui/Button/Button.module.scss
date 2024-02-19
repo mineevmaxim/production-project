@@ -4,8 +4,7 @@
     padding: 6px 15px;
 }
 
-.clear,
-.clearInverted {
+.clear {
     padding: 0;
     border: none;
     background: none;
@@ -13,6 +12,10 @@
 }
 
 .clearInverted {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
     color: var(--inverted-primary-color);
 }
 
@@ -63,4 +66,8 @@
 
 .size_xl {
     font: var(--font-xl);
+}
+
+.disabled {
+    opacity: 0.5;
 }

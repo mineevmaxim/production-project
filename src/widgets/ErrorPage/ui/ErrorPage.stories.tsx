@@ -9,6 +9,7 @@ export default {
     title: 'widget/ErrorPage',
     component: ErrorPage,
     argTypes: {
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof ErrorPage>;
 

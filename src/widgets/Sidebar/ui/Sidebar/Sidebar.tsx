@@ -32,8 +32,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
                 onClick={onToggle}
                 className={cls.collapseBtn}
                 theme={ButtonTheme.BACKGROUND_INVERTED}
-                square
                 size={ButtonSize.L}
+                square
             >
                 {collapsed ? '>' : '<'}
             </Button>
@@ -62,8 +62,8 @@ export const Sidebar = ({ className }: SidebarProps) => {
             <div className={cls.switchers}>
                 <ThemeSwitcher />
                 <LangSwitcher
-                    className={cls.lang}
                     short={collapsed}
+                    className={cls.lang}
                 />
             </div>
         </div>

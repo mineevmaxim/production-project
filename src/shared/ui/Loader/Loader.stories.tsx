@@ -7,7 +7,9 @@ import { Loader } from './Loader';
 export default {
     title: 'shared/Loader',
     component: Loader,
-    argTypes: {},
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
     args: {
         to: '/',
     },

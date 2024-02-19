@@ -8,6 +8,7 @@ export default {
     title: 'pages/NotFoundPage',
     component: NotFoundPage,
     argTypes: {
+        backgroundColor: { control: 'color' },
     },
 } as ComponentMeta<typeof NotFoundPage>;
 
