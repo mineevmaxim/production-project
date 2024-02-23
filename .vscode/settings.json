@@ -5,5 +5,10 @@
         "source.fixAll.eslint": "explicit"
     },
     "eslint.validate": ["javascript", "typescript"],
-    "editor.tabCompletion": "on"
+    "editor.tabCompletion": "on",
+    "i18n-ally.localesPaths": [
+        "public/locales",
+        "src/shared/config/i18n"
+    ],
+    "i18n-ally.sourceLanguage": "en"
 }
