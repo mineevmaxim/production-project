@@ -25,5 +25,14 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Максим",
+    "lastname": "Минеев",
+    "age": 20,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Yekaterinburg",
+    "username": "admin",
+    "avatar": "https://sun9-7.userapi.com/impg/NSwoYvMU9r0ujKi_fmOi5dpyFCBD9LnJJA7yxw/mvKHb_33J1I.jpg?size=1080x1439&quality=95&sign=1e012b0521b92b52cc0e5340a435856f&type=album"
+  }
 }
