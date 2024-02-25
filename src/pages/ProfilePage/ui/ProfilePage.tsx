@@ -14,6 +14,8 @@ import { useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Currency } from 'entities/Currency';
+import { Country } from 'entities/Country';
 import cls from './ProfilePage.module.scss';
 import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader';
 
@@ -62,6 +64,26 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         }));
     }, [dispatch]);
 
+    const onChangeUsername = useCallback((value: string) => {
+        dispatch(profileActions.updateProfile({
+            username: value || '',
+        }));
+    }, [dispatch]);
+
+    const onChangeAvatar = useCallback((value: string) => {
+        dispatch(profileActions.updateProfile({
+            avatar: value || '',
+        }));
+    }, [dispatch]);
+
+    const onChangeCurrency = useCallback((currency: Currency) => {
+        dispatch(profileActions.updateProfile({ currency }));
+    }, [dispatch]);
+
+    const onChangeCountry = useCallback((country: Country) => {
+        dispatch(profileActions.updateProfile({ country }));
+    }, [dispatch]);
+
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.ProfilePage, {}, [className])}>
@@ -75,6 +97,10 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                     onChangeLastName={onChangeLastName}
                     onChangeAge={onChangeAge}
                     onChangeCity={onChangeCity}
+                    onChangeAvatar={onChangeAvatar}
+                    onChangeUsername={onChangeUsername}
+                    onChangeCurrency={onChangeCurrency}
+                    onChangeCountry={onChangeCountry}
                 />
             </div>
         </DynamicModuleLoader>

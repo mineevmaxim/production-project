@@ -14,3 +14,13 @@
     justify-content: center;
     height: 300px;
 }
+
+.avatarWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.editing {
+    border: 2px solid var(--inverted-primary-color);
+}

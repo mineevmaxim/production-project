@@ -57,6 +57,7 @@ module.exports = {
         'no-undef': 'off',
         'no-unused-vars': 'off',
         'linebreak-style': 'off',
+        'no-tabs': 'off',
     },
 
     globals: {
