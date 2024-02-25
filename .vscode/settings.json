@@ -1,14 +1,21 @@
 {
-    "files.autoSave": "onFocusChange",
-    "window.autoDetectColorScheme": false,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "eslint.validate": ["javascript", "typescript"],
+    "files.autoSave": "onWindowChange",
+    "eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	  ],
+	"editor.codeActionsOnSave": {
+	    "source.fixAll.eslint": "always",
+	},
     "editor.tabCompletion": "on",
     "i18n-ally.localesPaths": [
         "public/locales",
         "src/shared/config/i18n"
     ],
-    "i18n-ally.sourceLanguage": "en"
+	"i18n-ally.sourceLanguage": "ru",
+	"i18n-ally.extract.ignored": [
+		"Произошла ошибка при загрузке профиля"
+	]
 }

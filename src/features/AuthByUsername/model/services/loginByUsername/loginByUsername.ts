@@ -14,7 +14,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
         const {
             dispatch,
             extra,
-            rejectWithValue
+            rejectWithValue,
         } = thunkApi;
 
         try {
