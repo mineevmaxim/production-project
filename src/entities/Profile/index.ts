@@ -1,6 +1,7 @@
 export {
     Profile,
     ProfileSchema,
+    ValidateProfileError,
 } from './model/types/profile';
 
 export {
@@ -25,3 +26,4 @@ export { getProfileError } from './model/selectors/getProfileError/getProfileErr
 export { getProfileReadonly } from './model/selectors/getProfileReadony/getProfileReadonly';
 export { getProfileIsLoading } from './model/selectors/getProfleIsLoading/getProfileIsLoading';
 export { getProfileForm } from './model/selectors/getProfileForm/getPofileForm';
+export { getProfileValidateErrors } from './model/selectors/getProfileValidateErrors/getProfileValidateErrors';
