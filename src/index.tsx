@@ -10,7 +10,6 @@ import { ErrorBoundary } from './app/providers/ErrorBoundary';
 render(
     <BrowserRouter>
         <StoreProvider>
-
             <ErrorBoundary>
                 <ThemeProvider>
                     <App />

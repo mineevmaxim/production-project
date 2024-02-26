@@ -1,12 +1,11 @@
+import React, { Suspense, useEffect } from 'react';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
-import { userActions } from 'entities/User';
-import { Suspense, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { PageLoader } from 'shared/ui/PageLoader/PageLoader';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
+import { useDispatch } from 'react-redux';
+import { userActions } from 'entities/User';
 
 function App() {
     const { theme } = useTheme();
@@ -18,7 +17,7 @@ function App() {
 
     return (
         <div className={classNames('app', {}, [theme])}>
-            <Suspense fallback={<PageLoader />}>
+            <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />
