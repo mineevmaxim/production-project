@@ -32,16 +32,19 @@ export const Text = memo((props: TextProps) => {
         className,
         text,
         title,
-        size = TextSize.M,
         theme = TextTheme.PRIMARY,
         align = TextAlign.LEFT,
+        size = TextSize.M,
     } = props;
 
     const mods: Mods = {
+        [cls[theme]]: true,
+        [cls[align]]: true,
+        [cls[size]]: true,
     };
 
     return (
-        <div className={classNames(cls.Text, mods, [className, cls[theme], cls[align], cls[size]])}>
+        <div className={classNames(cls.Text, mods, [className])}>
             {title && <p className={cls.title}>{title}</p>}
             {text && <p className={cls.text}>{text}</p>}
         </div>

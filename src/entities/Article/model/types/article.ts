@@ -1,37 +1,37 @@
-export enum ArticleBLockType {
-	CODE = 'CODE',
-	IMAGE = 'IMAGE',
-	TEXT = 'TEXT',
+export enum ArticleBlockType {
+    CODE = 'CODE',
+    IMAGE = 'IMAGE',
+    TEXT = 'TEXT',
 }
 
 export interface ArticleBlockBase {
-	id: string;
-	type: ArticleBLockType;
+    id: string;
+    type: ArticleBlockType;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-	type: ArticleBLockType.CODE;
-	code: string;
+    type: ArticleBlockType.CODE;
+    code: string;
 }
 
 export interface ArticleImageBlock extends ArticleBlockBase {
-	type: ArticleBLockType.IMAGE;
-	src: string;
-	title: string;
+    type: ArticleBlockType.IMAGE;
+    src: string;
+    title: string;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-	type: ArticleBLockType.TEXT;
-	paragraphs: string[];
-	title?: string;
+    type: ArticleBlockType.TEXT;
+    paragraphs: string[];
+    title?: string;
 }
 
-export type ArticleBlock = ArticleTextBlock | ArticleCodeBlock | ArticleImageBlock;
+export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
 
 export enum ArticleType {
-	IT = 'IT',
-	SCIENCE = 'SCIENCE',
-	ECONOMICS = 'ECONOMICS',
+    IT = 'IT',
+    SCIENCE = 'SCIENCE',
+    ECONOMICS = 'ECONOMICS'
 }
 
 export interface Article {
