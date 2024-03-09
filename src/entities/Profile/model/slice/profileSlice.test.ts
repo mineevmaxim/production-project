@@ -5,6 +5,7 @@ import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 
 const data = {
+    id: '1',
     username: 'admin',
     age: 22,
     country: Country.Ukraine,
