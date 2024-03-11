@@ -151,6 +151,12 @@
       "userId": "2",
       "text": "asdasdasd",
       "id": "MVvGQoZ"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Алиночка, солнышко моё, я тебя очень сильно люблю <3",
+      "id": "WVmuh9e"
     }
   ],
   "users": [
@@ -179,7 +185,7 @@
       "country": "Belarus",
       "city": "Moscow",
       "username": "admin213",
-      "avatar": "https://avatars.mds.yandex.net/get-zen_doc/3413519/pub_5ff887b2fe4e686f6ae6ba3f_5ff887d7f906b16872a69755/scale_1200"
+      "avatar": "https://sun9-7.userapi.com/impg/NSwoYvMU9r0ujKi_fmOi5dpyFCBD9LnJJA7yxw/mvKHb_33J1I.jpg?size=1080x1439&quality=95&sign=1e012b0521b92b52cc0e5340a435856f&type=album"
     },
     {
       "id": "2",
