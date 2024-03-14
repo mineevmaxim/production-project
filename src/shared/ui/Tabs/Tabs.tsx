@@ -26,7 +26,7 @@ export const Tabs = memo((props: TabsProps) => {
 
     const clickHandle = useCallback((tab: TabItem) => () => {
         onTabClick(tab);
-    }, []);
+    }, [onTabClick]);
 
     return (
         <div className={classNames(cls.Tabs, {}, [className])}>
