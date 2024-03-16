@@ -11,3 +11,4 @@ export {
 } from './model/types/article';
 export { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 export { ArticleViewSelector } from './ui/ArticleViewSelector/ArticleViewSelector';
+export { getArticleDetailsData, getArticleDetailsIsLoading, getArticleDetailsError } from './model/selectors/articleDetails';
