@@ -1,14 +1,11 @@
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import {
-    Fragment, memo, ReactNode, useState,
-} from 'react';
+import { Fragment, memo, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
-import { HStack } from 'shared/ui/Stack';
+import { DropdownDirection } from 'shared/types/ui';
+import { HStack } from '../Stack';
 import { Button } from '../Button/Button';
 import cls from './ListBox.module.scss';
-
-type DropdownDirection = 'top' | 'bottom';
 
 export interface ListBoxItem {
     value: string;
@@ -28,8 +25,10 @@ interface ListBoxProps {
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
-    bottom: cls.optionsBottom,
-    top: cls.optionsTop,
+    'bottom left': cls.optionsBottomLeft,
+    'bottom right': cls.optionsBottomRight,
+    'top left': cls.optionsTopLeft,
+    'top right': cls.optionsTopRight,
 };
 
 export const ListBox = memo((props: ListBoxProps) => {
@@ -40,7 +39,7 @@ export const ListBox = memo((props: ListBoxProps) => {
         onChange,
         defaultValue,
         readonly,
-        direction = 'bottom',
+        direction = 'bottom left',
         label,
     } = props;
     const { t } = useTranslation();
