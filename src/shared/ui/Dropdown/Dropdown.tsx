@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Fragment, memo, ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
 import { DropdownDirection } from 'shared/types/ui';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppLink } from '../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 
 export interface DropdownItem {
