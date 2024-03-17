@@ -7,9 +7,9 @@ export type FlexAlign = 'start' | 'center' | 'end';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '16' | '32' | '64';
 
-interface FlexProps {
+export interface FlexProps {
     className?: string;
-    children: ReactNode;
+    children?: ReactNode;
     justify?: FlexJustify;
     align?: FlexAlign;
     direction: FlexDirection;
