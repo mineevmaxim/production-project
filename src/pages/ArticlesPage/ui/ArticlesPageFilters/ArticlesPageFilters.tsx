@@ -12,6 +12,7 @@ import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/Art
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticleType } from 'entities/Article/model/types/article';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import {
     getArticlesPageOrder,
@@ -74,8 +75,8 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
     }, [dispatch, fetchData]);
 
     return (
-        <div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-            <div className={cls.sortWrapper}>
+        <VStack max className={classNames(cls.ArticlesPageFilters, {}, [className])}>
+            <HStack max gap="16" justify="between">
                 <ArticleSortSelector
                     sort={sort}
                     order={order}
@@ -83,7 +84,7 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                     onChangeSort={onChangeSort}
                 />
                 <ArticleViewSelector view={view} onViewClick={onChangeView} />
-            </div>
+            </HStack>
             <Card className={cls.search}>
                 <Input
                     placeholder={t('Поиск')}
@@ -96,6 +97,6 @@ export const ArticlesPageFilters = memo((props: ArticlesPageFiltersProps) => {
                 onChangeType={onChangeType}
                 value={type}
             />
-        </div>
+        </VStack>
     );
 });

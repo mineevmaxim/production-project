@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticleEditForm } from './ArticleEditForm';
 
 export default {
-    title: 'shared/ArticleEditForm',
+    title: 'features/ArticleEditForm',
     component: ArticleEditForm,
     argTypes: {},
 } as ComponentMeta<typeof ArticleEditForm>;

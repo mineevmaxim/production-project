@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import ArticleCreatePage from './ArticleCreatePage';
 
 export default {
-    title: 'shared/ArticleCreatePage',
+    title: 'pages/ArticleCreatePage',
     component: ArticleCreatePage,
     argTypes: {},
 } as ComponentMeta<typeof ArticleCreatePage>;

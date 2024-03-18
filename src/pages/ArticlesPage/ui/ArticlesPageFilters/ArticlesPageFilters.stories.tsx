@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ArticlesPageFilters } from './ArticlesPageFilters';
 
 export default {
-    title: 'pages/ArticlesPage/ArticlesPageFilters',
+    title: 'pages/ArticlesPage/ArticlesPage/ArticlesPageFilters',
     component: ArticlesPageFilters,
     argTypes: {},
 } as ComponentMeta<typeof ArticlesPageFilters>;
