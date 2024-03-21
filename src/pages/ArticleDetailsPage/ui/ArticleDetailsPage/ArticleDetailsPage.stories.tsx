@@ -26,8 +26,7 @@ const article: Article = {
     type: [ArticleType.IT],
     user: {
         id: '1',
-        username: 'ellepheria',
-        avatar: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+        username: 'Ulbi tv',
     },
     blocks: [
         {

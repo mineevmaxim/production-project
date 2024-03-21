@@ -12,7 +12,6 @@ interface RequireAuthProps {
 export function RequireAuth({ children, roles }: RequireAuthProps) {
     const auth = useSelector(getUserAuthData);
     const location = useLocation();
-
     const userRoles = useSelector(getUserRoles);
 
     const hasRequiredRoles = useMemo(() => {
@@ -20,10 +19,13 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
             return true;
         }
 
-        return roles.some((requiredRole) => userRoles?.includes(requiredRole));
+        return roles.some((requiredRole) => {
+            const hasRole = userRoles?.includes(requiredRole);
+            return hasRole;
+        });
     }, [roles, userRoles]);
 
-    if (!auth || !hasRequiredRoles) {
+    if (!auth) {
         return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
     }
 

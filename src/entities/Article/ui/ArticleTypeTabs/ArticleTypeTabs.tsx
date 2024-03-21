@@ -6,21 +6,13 @@ import { ArticleType } from '../../model/types/article';
 
 interface ArticleTypeTabsProps {
     className?: string;
-    onChangeType: (type: ArticleType) => void;
     value: ArticleType;
+    onChangeType: (type: ArticleType) => void;
 }
 
 export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
-    const {
-        className,
-        onChangeType,
-        value,
-    } = props;
+    const { className, value, onChangeType } = props;
     const { t } = useTranslation();
-
-    const onTabClick = useCallback((tab: TabItem) => {
-        onChangeType(tab.value as ArticleType);
-    }, [onChangeType]);
 
     const typeTabs = useMemo<TabItem[]>(() => [
         {
@@ -40,6 +32,10 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
             content: t('Наука'),
         },
     ], [t]);
+
+    const onTabClick = useCallback((tab: TabItem) => {
+        onChangeType(tab.value as ArticleType);
+    }, [onChangeType]);
 
     return (
         <Tabs

@@ -1,4 +1,3 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
@@ -10,35 +9,29 @@ import {
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
-import cls from './ArticleInfiniteList.module.scss';
 
 interface ArticleInfiniteListProps {
     className?: string;
 }
 
 export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
-    const {
-        className,
-    } = props;
-
-    const { t } = useTranslation();
+    const { className } = props;
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
-    const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
+    const error = useSelector(getArticlesPageError);
+    const { t } = useTranslation();
 
     if (error) {
         return <Text text={t('Ошибка при загрузке статей')} />;
     }
 
     return (
-        <div className={classNames(cls.ArticleInfiniteList, {}, [className])}>
-            <ArticleList
-                articles={articles}
-                isLoading={isLoading}
-                view={view}
-                className={className}
-            />
-        </div>
+        <ArticleList
+            isLoading={isLoading}
+            view={view}
+            articles={articles}
+            className={className}
+        />
     );
 });

@@ -22,7 +22,6 @@ export const fetchArticlesList = createAsyncThunk<
     >(
         'articlesPage/fetchArticlesList',
         async (props, thunkApi) => {
-            const { replace } = props;
             const { extra, rejectWithValue, getState } = thunkApi;
             const limit = getArticlesPageLimit(getState());
             const sort = getArticlesPageSort(getState());
@@ -33,7 +32,7 @@ export const fetchArticlesList = createAsyncThunk<
 
             try {
                 addQueryParams({
-                    sort, order, search,
+                    sort, order, search, type,
                 });
                 const response = await extra.api.get<Article[]>('/articles', {
                     params: {

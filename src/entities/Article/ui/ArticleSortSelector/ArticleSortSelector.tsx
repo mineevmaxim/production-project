@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { useMemo } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { SortOrder } from 'shared/types';
 import { ArticleSortField } from '../../model/types/article';
@@ -14,57 +14,61 @@ interface ArticleSortSelectorProps {
     onChangeSort: (newSort: ArticleSortField) => void;
 }
 
-export const ArticleSortSelector = (props: ArticleSortSelectorProps) => {
+export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
     const {
-        className,
-        onChangeSort,
-        sort,
-        onChangeOrder,
-        order,
+        className, onChangeOrder, onChangeSort, order, sort,
     } = props;
     const { t } = useTranslation();
 
-    const orderOptions = useMemo<SelectOption<SortOrder>[]>(() => [
+    const orderOptions = useMemo<SelectOption[]>(() => [
         {
-            value: SortOrder.asc,
+            value: 'asc',
             content: t('возрастанию'),
         },
         {
-            value: SortOrder.desc,
+            value: 'desc',
             content: t('убыванию'),
         },
     ], [t]);
 
-    const sortFieldOptions = useMemo<SelectOption<ArticleSortField>[]>(() => [
+    const sortFieldOptions = useMemo<SelectOption[]>(() => [
         {
             value: ArticleSortField.CREATED,
             content: t('дате создания'),
         },
         {
-            value: ArticleSortField.VIEWS,
-            content: t('просмотрам'),
-        },
-        {
             value: ArticleSortField.TITLE,
             content: t('названию'),
         },
+        {
+            value: ArticleSortField.VIEWS,
+            content: t('просмотрам'),
+        },
     ], [t]);
+
+    const changeSortHandler = useCallback((newSort: string) => {
+        onChangeSort(newSort as ArticleSortField);
+    }, [onChangeSort]);
+
+    const changeOrderHandler = useCallback((newOrder: string) => {
+        onChangeOrder(newOrder as SortOrder);
+    }, [onChangeOrder]);
 
     return (
         <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
-            <Select<ArticleSortField>
-                label={t('Сортировать по')}
+            <Select
                 options={sortFieldOptions}
+                label={t('Сортировать ПО')}
                 value={sort}
-                onChange={onChangeSort}
+                onChange={changeSortHandler}
             />
-            <Select<SortOrder>
-                label={t('По')}
+            <Select
                 options={orderOptions}
+                label={t('по')}
                 value={order}
-                onChange={onChangeOrder}
+                onChange={changeOrderHandler}
                 className={cls.order}
             />
         </div>
     );
-};
+});

@@ -13,8 +13,8 @@ interface ArticleListProps {
     className?: string;
     articles: Article[]
     isLoading?: boolean;
-    view?: ArticleView;
     target?: HTMLAttributeAnchorTarget;
+    view?: ArticleView;
     virtualized?: boolean;
 }
 
@@ -31,26 +31,16 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.SMALL,
         isLoading,
         target,
-        virtualized,
+        virtualized = true,
     } = props;
     const { t } = useTranslation();
-
-    const renderArticle = (article: Article) => (
-        <ArticleListItem
-            article={article}
-            view={view}
-            className={cls.card}
-            key={article.id}
-            target={target}
-        />
-    );
 
     const isBig = view === ArticleView.BIG;
 
     const itemsPerRow = isBig ? 1 : 3;
     const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
 
-    const rowRenderer = ({
+    const rowRender = ({
         index, isScrolling, key, style,
     }: ListRowProps) => {
         const items = [];
@@ -62,9 +52,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 <ArticleListItem
                     article={articles[i]}
                     view={view}
-                    className={cls.card}
-                    key={articles[i].id}
                     target={target}
+                    key={`str${i}`}
+                    className={cls.card}
                 />,
             );
         }
@@ -83,12 +73,13 @@ export const ArticleList = memo((props: ArticleListProps) => {
     if (!isLoading && !articles.length) {
         return (
             <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-                <Text title={t('Статьи не найдены')} size={TextSize.L} />
+                <Text size={TextSize.L} title={t('Статьи не найдены')} />
             </div>
         );
     }
 
     return (
+        // @ts-ignore
         <WindowScroller
             scrollElement={document.getElementById(PAGE_ID) as Element}
         >
@@ -101,18 +92,20 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 scrollTop,
             }) => (
                 <div
+                    // @ts-ignore
                     ref={registerChild}
                     className={classNames(cls.ArticleList, {}, [className, cls[view]])}
                 >
                     {virtualized
                         ? (
+                            // @ts-ignore
                             <List
-                                autoHeight
-                                rowCount={rowCount}
                                 height={height ?? 700}
+                                rowCount={rowCount}
                                 rowHeight={isBig ? 700 : 330}
-                                rowRenderer={rowRenderer}
+                                rowRenderer={rowRender}
                                 width={width ? width - 80 : 700}
+                                autoHeight
                                 onScroll={onChildScroll}
                                 isScrolling={isScrolling}
                                 scrollTop={scrollTop}
@@ -129,7 +122,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
                                 />
                             ))
                         )}
-
                     {isLoading && getSkeletons(view)}
                 </div>
             )}

@@ -1,1 +1,1 @@
-export { ArticleEditForm } from './ui/ArticleEditForm';
+// Форма создания статьи

@@ -6,7 +6,9 @@ import { ListBox } from './ListBox';
 export default {
     title: 'shared/ListBox',
     component: ListBox,
-    argTypes: {},
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
     decorators: [
         (Story) => <div style={{ padding: 100 }}><Story /></div>,
     ],
@@ -14,56 +16,51 @@ export default {
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Normal = Template.bind({});
+Normal.args = {
     value: '123',
     items: [
-        { content: '2134ewdwqd', value: '123' },
-        { content: '214131', value: '1234' },
-        { content: '2134ed1223wdwqd', value: '1235' },
+        { content: '1asfasfasf23', value: '123' },
+        { content: '1asfasfasf21233', value: '1232' },
     ],
 };
 
 export const topLeft = Template.bind({});
 topLeft.args = {
+    direction: 'top left',
     value: '123',
     items: [
-        { content: '2134ewdwqd', value: '123' },
-        { content: '214131', value: '1234' },
-        { content: '2134ed1223wdwqd', value: '1235' },
+        { content: '1asfasfasf23', value: '123' },
+        { content: '1asfasfasf21233', value: '1232' },
     ],
-    direction: 'top left',
 };
 
 export const topRight = Template.bind({});
 topRight.args = {
-    value: '123',
-    items: [
-        { content: '2134ewdwqd', value: '123' },
-        { content: '214131', value: '1234' },
-        { content: '2134ed1223wdwqd', value: '1235' },
-    ],
     direction: 'top right',
-};
-
-export const bottomRight = Template.bind({});
-bottomRight.args = {
     value: '123',
     items: [
-        { content: '2134ewdwqd', value: '123' },
-        { content: '214131', value: '1234' },
-        { content: '2134ed1223wdwqd', value: '1235' },
+        { content: '1asfasfasf23', value: '123' },
+        { content: '1asfasfasf21233', value: '1232' },
     ],
-    direction: 'bottom right',
 };
 
 export const bottomLeft = Template.bind({});
 bottomLeft.args = {
+    direction: 'bottom left',
     value: '123',
     items: [
-        { content: '2134ewdwqd', value: '123' },
-        { content: '214131', value: '1234' },
-        { content: '2134ed1223wdwqd', value: '1235' },
+        { content: '1asfasfasf23', value: '123' },
+        { content: '1asfasfasf21233', value: '1232' },
     ],
-    direction: 'bottom left',
+};
+
+export const bottomRight = Template.bind({});
+bottomRight.args = {
+    direction: 'bottom right',
+    value: '123',
+    items: [
+        { content: '1asfasfasf23', value: '123' },
+        { content: '1asfasfasf21233', value: '1232' },
+    ],
 };

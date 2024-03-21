@@ -56,8 +56,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Создать статью')}
                 </AppLink>
                 <Dropdown
-                    className={cls.dropdown}
                     direction="bottom left"
+                    className={cls.dropdown}
                     items={[
                         ...(isAdminPanelAvailable ? [{
                             content: t('Админка'),

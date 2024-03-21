@@ -15,8 +15,7 @@ export const ${componentName} = memo((props: ${componentName}Props) => {
     
     return (
         <div className={classNames(cls.${componentName}, {}, [className])}>
-           /
+           
         </div>
     );
-});
-`;
+});`;

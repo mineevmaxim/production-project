@@ -7,13 +7,15 @@ import { Dropdown } from './Dropdown';
 export default {
     title: 'shared/Dropdown',
     component: Dropdown,
-    argTypes: {},
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
 } as ComponentMeta<typeof Dropdown>;
 
 const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const Normal = Template.bind({});
+Normal.args = {
     trigger: <Button>Open</Button>,
     items: [
         {

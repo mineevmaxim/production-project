@@ -4,16 +4,16 @@
     box-sizing: border-box;
 }
 
+li {
+    list-style-type: none;
+}
+
 input,
 button,
 textarea,
 select {
     margin: 0;
     font: inherit;
-}
-
-li {
-    list-style-type: none;
 }
 
 a {

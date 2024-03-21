@@ -1,7 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { Fragment, memo, ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { Fragment, ReactNode } from 'react';
 import { DropdownDirection } from 'shared/types/ui';
 import { AppLink } from '../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
@@ -16,25 +15,21 @@ export interface DropdownItem {
 interface DropdownProps {
     className?: string;
     items: DropdownItem[];
-    trigger: ReactNode;
     direction?: DropdownDirection;
+    trigger: ReactNode;
 }
 
 const mapDirectionClass: Record<DropdownDirection, string> = {
     'bottom left': cls.optionsBottomLeft,
     'bottom right': cls.optionsBottomRight,
-    'top left': cls.optionsTopLeft,
     'top right': cls.optionsTopRight,
+    'top left': cls.optionsTopLeft,
 };
 
-export const Dropdown = memo((props: DropdownProps) => {
+export function Dropdown(props: DropdownProps) {
     const {
-        className,
-        items,
-        trigger,
-        direction = 'bottom right',
+        className, trigger, items, direction = 'bottom right',
     } = props;
-    const { t } = useTranslation();
 
     const menuClasses = [mapDirectionClass[direction]];
 
@@ -48,9 +43,9 @@ export const Dropdown = memo((props: DropdownProps) => {
                     const content = ({ active }: {active: boolean}) => (
                         <button
                             type="button"
-                            onClick={item.onClick}
-                            className={classNames(cls.item, { [cls.active]: active }, [])}
                             disabled={item.disabled}
+                            onClick={item.onClick}
+                            className={classNames(cls.item, { [cls.active]: active })}
                         >
                             {item.content}
                         </button>
@@ -58,26 +53,20 @@ export const Dropdown = memo((props: DropdownProps) => {
 
                     if (item.href) {
                         return (
-                            <Menu.Item
-                                as={AppLink}
-                                to={item.href}
-                                disabled={item.disabled}
-                            >
+                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item
-                            as={Fragment}
-                            disabled={item.disabled}
-                        >
+                        <Menu.Item as={Fragment} disabled={item.disabled}>
                             {content}
                         </Menu.Item>
                     );
                 })}
+
             </Menu.Items>
         </Menu>
     );
-});
+}

@@ -2,14 +2,15 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
+
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { getUserAuthData } from 'entities/User';
+import { profileActions } from '../../model/slice/profileSlice';
 import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
 import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
-import { profileActions } from '../../model/slice/profileSlice';
 import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 
 interface EditableProfileCardHeaderProps {
@@ -22,12 +23,9 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
     } = props;
 
     const { t } = useTranslation('profile');
-
     const authData = useSelector(getUserAuthData);
     const profileData = useSelector(getProfileData);
-
     const canEdit = authData?.id === profileData?.id;
-
     const readonly = useSelector(getProfileReadonly);
     const dispatch = useAppDispatch();
 
@@ -59,7 +57,7 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
                             </Button>
                         )
                         : (
-                            <HStack max gap="8">
+                            <HStack gap="8">
                                 <Button
                                     theme={ButtonTheme.OUTLINE_RED}
                                     onClick={onCancelEdit}
@@ -78,7 +76,6 @@ export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderP
                         )}
                 </div>
             )}
-
         </HStack>
     );
 });
