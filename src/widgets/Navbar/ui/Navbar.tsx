@@ -19,6 +19,7 @@ import { Popover } from 'shared/ui/Popups';
 import { NotificationList } from 'entities/Notification';
 import { NotificationButton } from 'features/notificationButton';
 import { AvatarDropdown } from 'features/avatarDropdown';
+import { Drawer } from 'shared/ui/Drawer/Drawer';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -54,6 +55,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Создать статью')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions}>
+
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>
