@@ -10,16 +10,13 @@ import {
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Dropdown } from 'shared/ui/Popups/ui/Dropdown/Dropdown';
+import { Dropdown } from 'shared/ui/Popups/components/Dropdown/Dropdown';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { HStack } from 'shared/ui/Stack';
-import { Icon } from 'shared/ui/Icon/Icon';
-import NotificationsIcon from 'shared/assets/icons/notification-20-20.svg';
-import { Popover } from 'shared/ui/Popups';
-import { NotificationList } from 'entities/Notification';
 import { NotificationButton } from 'features/notificationButton';
 import { AvatarDropdown } from 'features/avatarDropdown';
 import { Drawer } from 'shared/ui/Drawer/Drawer';
+import { NotificationList } from 'entities/Notification';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -55,7 +52,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     {t('Создать статью')}
                 </AppLink>
                 <HStack gap="16" className={cls.actions}>
-
                     <NotificationButton />
                     <AvatarDropdown />
                 </HStack>

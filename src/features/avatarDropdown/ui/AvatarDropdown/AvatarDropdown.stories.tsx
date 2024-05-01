@@ -6,10 +6,12 @@ import { AvatarDropdown } from './AvatarDropdown';
 export default {
     title: 'shared/AvatarDropdown',
     component: AvatarDropdown,
-    argTypes: {},
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
 } as ComponentMeta<typeof AvatarDropdown>;
 
 const Template: ComponentStory<typeof AvatarDropdown> = (args) => <AvatarDropdown {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Normal = Template.bind({});
+Normal.args = {};

@@ -4,25 +4,22 @@ import React, { memo, useCallback } from 'react';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Dropdown } from 'shared/ui/Popups';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     getUserAuthData, isUserAdmin, isUserManager, userActions,
 } from 'entities/User';
-import { useDispatch, useSelector } from 'react-redux';
-import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {
     className?: string;
 }
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
-    const {
-        className,
-    } = props;
-    const authData = useSelector(getUserAuthData);
+    const { className } = props;
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
+    const authData = useSelector(getUserAuthData);
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
@@ -37,7 +34,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     return (
         <Dropdown
             direction="bottom left"
-            className={classNames(cls.AvatarDropdown, {}, [className])}
+            className={classNames('', {}, [className])}
             items={[
                 ...(isAdminPanelAvailable ? [{
                     content: t('Админка'),
