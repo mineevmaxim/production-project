@@ -72,6 +72,13 @@ module.exports = {
         'arrow-body-style': 'off',
         'ellepheria-plugin/path-checker': ['error', { alias: '@' }],
         'ellepheria-plugin/public-api-imports': ['error', { alias: '@' }],
+        'ellepheria-plugin/layer-imports': [
+            'error',
+            {
+                alias: '@',
+                ignoreImportPatterns: ['**/StoreProvider'],
+            },
+        ],
     },
     globals: {
         __IS_DEV__: true,
