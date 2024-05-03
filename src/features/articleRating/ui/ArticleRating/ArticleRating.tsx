@@ -26,18 +26,22 @@ const ArticleRating = (props: ArticleRatingProps) => {
 
     const [rateArticleMutation] = useRateArticle();
 
-    const rateArticleHandler = useCallback((starsCount: number, feedback?: string) => {
-        try {
-            rateArticleMutation({
-                userId: userData?.id ?? '',
-                rate: starsCount,
-                articleId,
-                feedback,
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }, [articleId, rateArticleMutation, userData?.id]);
+    const rateArticleHandler = useCallback(
+        (starsCount: number, feedback?: string) => {
+            try {
+                rateArticleMutation({
+                    userId: userData?.id ?? '',
+                    rate: starsCount,
+                    articleId,
+                    feedback,
+                });
+            } catch (e) {
+                // eslint-disable-next-line
+                console.error(e);
+            }
+        },
+        [articleId, rateArticleMutation, userData?.id],
+    );
 
     const onCancel = useCallback((starsCount: number) => {
         rateArticleHandler(starsCount);

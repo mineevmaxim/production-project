@@ -1,6 +1,7 @@
 export {
     ArticleDetails,
 } from './ui/ArticleDetails/ArticleDetails';
+export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 
 export type {
     Article,
@@ -17,4 +18,5 @@ export {
     ArticleView,
     ArticleType,
     ArticleSortField,
+    ArticleBlockType,
 } from './model/consts/articleConsts';
