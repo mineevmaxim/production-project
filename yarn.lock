@@ -7577,10 +7577,10 @@ eslint-module-utils@^2.8.0:
   dependencies:
     debug "^3.2.7"
 
-eslint-plugin-ellepheria-plugin@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/eslint-plugin-ellepheria-plugin/-/eslint-plugin-ellepheria-plugin-0.0.3.tgz"
-  integrity sha512-abW/XoHYYARdCkTLfQnZ3hmV0hzIbrHwF/N6abflubJVBqQrb52kqTrYaQl7GezbccrLhWycpKRy+HVXYa0kDA==
+eslint-plugin-ellepheria-plugin@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npmjs.org/eslint-plugin-ellepheria-plugin/-/eslint-plugin-ellepheria-plugin-0.0.4.tgz"
+  integrity sha512-nYDl1VqsPQoAW9DsqRLormrXgMHLCYLBLjIMWyfplXx/IrUnlxUYWEuDa252oPGp5gy7gW3oT778kuM/SxpuOg==
   dependencies:
     micromatch "^4.0.5"
     requireindex "^1.2.0"
