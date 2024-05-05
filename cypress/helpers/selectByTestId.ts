@@ -1,3 +1,3 @@
-export function selectByTestId(testid: string) {
-    return `[data-testid=${testid}]`;
+export function selectByTestId(testId: string) {
+    return `[data-testid="${testId}"]`;
 }
