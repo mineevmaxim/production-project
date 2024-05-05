@@ -1,7 +1,7 @@
 [production]
 defaults
 not IE 11
-not  dead
+not dead
 
 
 [development]
