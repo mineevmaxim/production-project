@@ -6,7 +6,7 @@ import { ErrorPage } from './ErrorPage';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'widget/ErrorPage',
+    title: 'widgets/ErrorPage',
     component: ErrorPage,
     argTypes: {
         backgroundColor: { control: 'color' },

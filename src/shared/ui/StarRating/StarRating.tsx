@@ -1,8 +1,8 @@
-import { memo, useCallback, useState } from 'react';
+import { memo, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './StarRating.module.scss';
-import StarIcon from '../../assets/icons/star.svg';
-import { Icon } from '@/shared/ui/Icon';
+import { Icon } from '../Icon/Icon';
+import StarIcon from '@/shared/assets/icons/star.svg';
 
 interface StarRatingProps {
     className?: string;
@@ -15,48 +15,42 @@ const stars = [1, 2, 3, 4, 5];
 
 export const StarRating = memo((props: StarRatingProps) => {
     const {
-        className,
-        selectedStars = 0,
-        onSelect,
-        size = 30,
+        className, size = 30, selectedStars = 0, onSelect,
     } = props;
     const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
-    const onHover = useCallback((starsCount: number) => () => {
+    const onHover = (starsCount: number) => () => {
         if (!isSelected) {
             setCurrentStarsCount(starsCount);
         }
-    }, [isSelected]);
+    };
 
-    const onLeave = useCallback(() => {
+    const onLeave = () => {
         if (!isSelected) {
             setCurrentStarsCount(0);
         }
-    }, [isSelected]);
+    };
 
-    const onClick = useCallback((starsCount: number) => () => {
+    const onClick = (starsCount: number) => () => {
         if (!isSelected) {
             onSelect?.(starsCount);
             setCurrentStarsCount(starsCount);
             setIsSelected(true);
         }
-    }, [isSelected, onSelect]);
+    };
 
     return (
         <div className={classNames(cls.StarRating, {}, [className])}>
             {stars.map((starNumber) => (
                 <Icon
-                    key={starNumber}
-                    Svg={StarIcon}
                     className={classNames(
                         cls.starIcon,
-                        {
-                            [cls.hovered]: currentStarsCount >= starNumber,
-                            [cls.selected]: isSelected,
-                        },
-                        [cls.normal],
+                        { [cls.selected]: isSelected },
+                        [currentStarsCount >= starNumber ? cls.hovered : cls.normal],
                     )}
+                    Svg={StarIcon}
+                    key={starNumber}
                     width={size}
                     height={size}
                     onMouseLeave={onLeave}

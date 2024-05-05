@@ -1,0 +1,10 @@
+[production]
+defaults
+not IE 11
+nor dead
+
+
+[development]
+last 2 Chrome versions
+last 2 Firefox versions
+last 1 Safari version

@@ -1,7 +1,6 @@
 export {
     ArticleDetails,
 } from './ui/ArticleDetails/ArticleDetails';
-export { articleDetailsReducer } from './model/slice/articleDetailsSlice';
 
 export type {
     Article,

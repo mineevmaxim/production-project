@@ -1,11 +1,11 @@
 import { screen } from '@testing-library/react';
 import { componentRender } from '@/shared/lib/tests/componentRender/componentRender';
 import AppRouter from './AppRouter';
-import { getRouteAbout, getRouteAdminPanel, getRouteProfile } from '@/shared/const/router';
+import { getRouteAbout, getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 import { UserRole } from '@/entities/User';
 
 describe('app/router/AppRouter', () => {
-    test('should create an instance', async () => {
+    test('Страница должна отрендериться', async () => {
         componentRender(<AppRouter />, {
             route: getRouteAbout(),
         });
@@ -14,16 +14,16 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('page not found', async () => {
+    test('Страница не найдена', async () => {
         componentRender(<AppRouter />, {
-            route: '/asdasd',
+            route: '/asfasfasfasf',
         });
 
         const page = await screen.findByTestId('NotFoundPage');
         expect(page).toBeInTheDocument();
     });
 
-    test('redirect with no auth data', async () => {
+    test('Редирект неавторизованного пользователя на главную', async () => {
         componentRender(<AppRouter />, {
             route: getRouteProfile('1'),
         });
@@ -32,7 +32,7 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('no redirect with auth data', async () => {
+    test('Доступ к закрытой страницы для авторизованного пользователя', async () => {
         componentRender(<AppRouter />, {
             route: getRouteProfile('1'),
             initialState: {
@@ -44,9 +44,9 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('forbidden', async () => {
+    test('Доступ запрещен (отсутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAdminPanel(),
+            route: getRouteAdmin(),
             initialState: {
                 user: { _inited: true, authData: {} },
             },
@@ -56,15 +56,15 @@ describe('app/router/AppRouter', () => {
         expect(page).toBeInTheDocument();
     });
 
-    test('with roles', async () => {
+    test('Доступ разрешен (присутствует роль)', async () => {
         componentRender(<AppRouter />, {
-            route: getRouteAdminPanel(),
+            route: getRouteAdmin(),
             initialState: {
                 user: { _inited: true, authData: { roles: [UserRole.ADMIN] } },
             },
         });
 
-        const page = await screen.findByTestId('AdminPage');
+        const page = await screen.findByTestId('AdminPanelPage');
         expect(page).toBeInTheDocument();
     });
 });

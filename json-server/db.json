@@ -767,16 +767,31 @@
     },
     {
       "userId": "1",
-      "rate": 3,
       "articleId": "3",
+      "rate": 3,
       "feedback": "",
-      "id": "A4rD4yS"
+      "id": "I7ofk1u"
     },
     {
       "userId": "1",
-      "rate": 4,
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "отстой",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
       "articleId": "7",
-      "id": "R5wCsWp"
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
     }
   ],
   "profile-ratings": [

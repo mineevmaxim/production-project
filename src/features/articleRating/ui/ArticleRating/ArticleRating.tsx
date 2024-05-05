@@ -11,11 +11,8 @@ export interface ArticleRatingProps {
     articleId: string;
 }
 
-const ArticleRating = (props: ArticleRatingProps) => {
-    const {
-        className,
-        articleId,
-    } = props;
+const ArticleRating = memo((props: ArticleRatingProps) => {
+    const { className, articleId } = props;
     const { t } = useTranslation();
     const userData = useSelector(getUserAuthData);
 
@@ -23,51 +20,47 @@ const ArticleRating = (props: ArticleRatingProps) => {
         articleId,
         userId: userData?.id ?? '',
     });
-
     const [rateArticleMutation] = useRateArticle();
 
-    const rateArticleHandler = useCallback(
-        (starsCount: number, feedback?: string) => {
-            try {
-                rateArticleMutation({
-                    userId: userData?.id ?? '',
-                    rate: starsCount,
-                    articleId,
-                    feedback,
-                });
-            } catch (e) {
-                // eslint-disable-next-line
-                console.error(e);
-            }
-        },
-        [articleId, rateArticleMutation, userData?.id],
-    );
-
-    const onCancel = useCallback((starsCount: number) => {
-        rateArticleHandler(starsCount);
-    }, [rateArticleHandler]);
+    const handleRateArticle = useCallback((starsCount: number, feedback?: string) => {
+        try {
+            rateArticleMutation({
+                userId: userData?.id ?? '',
+                articleId,
+                rate: starsCount,
+                feedback,
+            });
+        } catch (e) {
+            // handle error
+            console.log(e);
+        }
+    }, [articleId, rateArticleMutation, userData?.id]);
 
     const onAccept = useCallback((starsCount: number, feedback?: string) => {
-        rateArticleHandler(starsCount, feedback);
-    }, [rateArticleHandler]);
+        handleRateArticle(starsCount, feedback);
+    }, [handleRateArticle]);
+
+    const onCancel = useCallback((starsCount: number) => {
+        handleRateArticle(starsCount);
+    }, [handleRateArticle]);
 
     if (isLoading) {
-        return (<Skeleton width="100%" height={120} />);
+        return <Skeleton width="100%" height={120} />;
     }
 
     const rating = data?.[0];
 
     return (
         <RatingCard
-            className={className}
-            onAccept={onAccept}
             onCancel={onCancel}
+            onAccept={onAccept}
             rate={rating?.rate}
+            className={className}
             title={t('Оцените статью')}
             feedbackTitle={t('Оставьте свой отзыв о статье, это поможет улучшить качество')}
             hasFeedback
         />
     );
-};
+});
 
-export default memo(ArticleRating);
+export default ArticleRating;

@@ -1,1 +1,1 @@
-export { Page, PAGE_ID } from './ui/Page';
+export { PAGE_ID, Page } from './ui/Page/Page';

@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof ArticleTypeTabs> = (args) => <ArticleTypeT
 
 export const Normal = Template.bind({});
 Normal.args = {
-   
+
 };

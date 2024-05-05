@@ -54,7 +54,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
                 value={sort}
                 onChange={onChangeSort}
             />
-            <Select<SortOrder>
+            <Select
                 options={orderOptions}
                 label={t('по')}
                 value={order}

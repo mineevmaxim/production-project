@@ -7,7 +7,7 @@ import { Navbar } from './Navbar';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'widget/Navbar',
+    title: 'widgets/Navbar',
     component: Navbar,
     argTypes: {
         backgroundColor: { control: 'color' },

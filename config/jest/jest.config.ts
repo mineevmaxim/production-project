@@ -41,9 +41,6 @@ export default {
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
         '^@/(.*)$': '<rootDir>/src/$1',
     },
-    transformIgnorePatterns: [
-        'node_modules/(?!axios/.*)',
-    ],
     reporters: [
         'default',
         ['jest-html-reporters', {

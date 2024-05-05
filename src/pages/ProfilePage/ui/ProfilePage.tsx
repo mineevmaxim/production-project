@@ -13,8 +13,8 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
     return (
         <Page
-            className={classNames('', {}, [className])}
             data-testid="ProfilePage"
+            className={classNames('', {}, [className])}
         >
             <VStack gap="16" max>
                 <EditableProfileCard id={id} />

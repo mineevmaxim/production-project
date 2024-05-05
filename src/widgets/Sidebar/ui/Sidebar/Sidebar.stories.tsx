@@ -7,7 +7,7 @@ import { Sidebar } from './Sidebar';
 import { Theme } from '@/shared/const/theme';
 
 export default {
-    title: 'widget/Sidebar',
+    title: 'widgets/Sidebar',
     component: Sidebar,
     argTypes: {
         backgroundColor: { control: 'color' },

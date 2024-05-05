@@ -1,9 +1,8 @@
 import {
     ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState,
 } from 'react';
-import { classNames } from '@/shared/lib/classNames/classNames';
 
-interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+interface AppImageProps extends ImgHTMLAttributes<HTMLImageElement>{
     className?: string;
     fallback?: ReactElement;
     errorFallback?: ReactElement;
@@ -14,11 +13,10 @@ export const AppImage = memo((props: AppImageProps) => {
         className,
         src,
         alt = 'image',
-        fallback,
         errorFallback,
+        fallback,
         ...otherProps
     } = props;
-
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
@@ -43,11 +41,6 @@ export const AppImage = memo((props: AppImageProps) => {
     }
 
     return (
-        <img
-            className={classNames('', {}, [className])}
-            src={src}
-            alt={alt}
-            {...otherProps}
-        />
+        <img className={className} src={src} alt={alt} {...otherProps} />
     );
 });
