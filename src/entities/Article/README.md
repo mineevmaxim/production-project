@@ -5,11 +5,11 @@
 
 #### Public api
 
-- Components
+-   Components
 
 `ArticleDetails` - компонент с информацией о статье
 
-`ArticleList` -  Компонент со списком статей
+`ArticleList` - Компонент со списком статей
 
 `ArticleViewSelector` - Компонент переключатель отображения списка статьей (плитка, список)
 
@@ -17,10 +17,10 @@
 
 `ArticleTypeTabs` - Компонент с выбором типа статьи
 
-- types
+-   types
 
 `Article` - Тип, описывающий статью
 
-- selectors
+-   selectors
 
 `getArticleDetailsData` - Селектор для получения информации о текущей открытой статье
