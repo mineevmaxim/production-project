@@ -2,6 +2,8 @@
     cursor: pointer;
     color: var(--text-redesigned);
     padding: 8px 16px;
+    display: flex;
+    align-items: center;
 
     &:hover {
         color: var(--accent-redesigned);
@@ -26,7 +28,12 @@
     border: none;
     outline: none;
     border-radius: 34px;
-    padding: 8px 16px;
+
+    &:hover {
+        .addonLeft svg, .addonRight svg {
+            color: var(accent-redesigned);
+        }
+    }
 }
 
 .square {
@@ -66,4 +73,20 @@
 
 .fullWidth {
     width: 100%;
+}
+
+.addonLeft svg, .addonRight svg {
+    color: var(--hint-redesigned);
+}
+
+.addonLeft, .addonRight {
+    display: flex;
+}
+
+.withAddonLeft {
+    padding: 0 16px;
+}
+
+.withAddonRight {
+    padding: 0 16px;
 }
