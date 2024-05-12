@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { setFeaturesFlags } from '@/shared/features';
 import { USER_LOCALSTORAGE_KEY } from '@/shared/const/localstorage';
 import { UserSchema, User } from '../types/user';
-import { setFeaturesFlags } from '@/shared/features';
 import { saveJsonSettings } from '../services/saveJsonSettings';
 import { initAuthData } from '../services/initAuthData';
 import { JsonSettings } from '../types/jsonSettings';

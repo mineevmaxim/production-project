@@ -89,7 +89,6 @@ module.exports = {
 				],
 			},
 		],
-		'react/jsx-max-props-per-line': [2, { maximum: 3 }],
 		'react/no-unstable-nested-components': 'warn',
 	},
 	globals: {

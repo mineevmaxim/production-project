@@ -1,6 +1,7 @@
 import { memo, MutableRefObject, ReactNode, UIEvent, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { toggleFeatures } from '@/shared/features';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -10,7 +11,6 @@ import { StateSchema } from '@/app/providers/StoreProvider';
 import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle';
 import cls from './Page.module.scss';
 import { TestProps } from '@/shared/types/tests';
-import { toggleFeatures } from '@/shared/features';
 
 interface PageProps extends TestProps {
 	className?: string;
