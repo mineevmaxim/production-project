@@ -1,5 +1,4 @@
 .Card {
-    border-radius: 32px;
 }
 
 .withoutPaddings {
@@ -20,6 +19,14 @@
 
 .max {
     width: 100%;
+}
+
+.round {
+    border-radius: 40px;
+}
+
+.normal {
+    border-radius: 32px;
 }
 
 .gap_0 {
