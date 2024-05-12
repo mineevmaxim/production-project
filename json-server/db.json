@@ -755,7 +755,8 @@
       },
       "avatar": "https://mobimg.b-cdn.net/v3/fetch/22/2207633df03a819cd72889249c8361a8.jpeg?w=1470&r=0.5625",
       "jsonSettings": {
-        "theme": "app_dark_theme"
+        "theme": "app_dark_theme",
+        "isArticlesPageWasOpened": true
       }
     },
     {
@@ -769,7 +770,11 @@
         "isArticleRatingEnabled": false,
         "isCounterEnabled": false
       },
-      "avatar": "https://i.pinimg.com/originals/9a/e0/2d/9ae02d4b4288396108ef77830a59e060.jpg"
+      "avatar": "https://i.pinimg.com/originals/9a/e0/2d/9ae02d4b4288396108ef77830a59e060.jpg",
+      "jsonSettings": {
+        "theme": "app_light_theme",
+        "isArticlesPageWasOpened": true
+      }
     },
     {
       "id": "3",
