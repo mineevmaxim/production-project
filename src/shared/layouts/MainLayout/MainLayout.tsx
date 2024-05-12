@@ -1,26 +1,26 @@
 import { memo, ReactElement } from 'react';
-import cls from './MainLayout.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import cls from './MainLayout.module.scss';
 
 interface MainLayoutProps {
-	className?: string;
-	header: ReactElement;
-	content: ReactElement;
-	sidebar: ReactElement;
-	toolbar?: ReactElement;
+    className?: string;
+    header: ReactElement;
+    content: ReactElement;
+    sidebar: ReactElement;
+    toolbar?: ReactElement;
 }
 
 export const MainLayout = memo((props: MainLayoutProps) => {
-	const { className, header, content, toolbar, sidebar } = props;
+    const { className, content, toolbar, header, sidebar } = props;
 
-	return (
-		<div className={classNames(cls.MainLayout, {}, [className])}>
-			<aside className={cls.sidebar}>{sidebar}</aside>
-			<main className={cls.content}>{content}</main>
-			<div className={cls.rightbar}>
-				<header className={cls.header}>{header}</header>
-				<aside className={cls.toolbar}>{toolbar}</aside>
-			</div>
-		</div>
-	);
+    return (
+        <div className={classNames(cls.MainLayout, {}, [className])}>
+            <div className={cls.content}>{content}</div>
+            <div className={cls.sidebar}>{sidebar}</div>
+            <div className={cls.rightbar}>
+                <div className={cls.header}>{header}</div>
+                <div className={cls.toolbar}>{toolbar}</div>
+            </div>
+        </div>
+    );
 });
