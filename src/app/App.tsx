@@ -8,6 +8,8 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ToggleFeature } from '@/shared/features';
+import { MainLayout } from '@/shared/layouts/MainLayout';
 
 function App() {
 	const { theme } = useTheme();
@@ -21,15 +23,32 @@ function App() {
 	if (!inited) return <PageLoader />;
 
 	return (
-		<div className={classNames('app', {}, [theme])}>
-			<Suspense fallback="">
-				<Navbar />
-				<div className="content-page">
-					<Sidebar />
-					{inited && <AppRouter />}
+		<ToggleFeature
+			feature="isAppRedesinged"
+			on={
+				<div className={classNames('app_redesinged', {}, [theme])}>
+					<Suspense fallback={<PageLoader />}>
+						<MainLayout
+							header={<Navbar />}
+							content={<AppRouter />}
+							sidebar={<Sidebar />}
+							toolbar={<div>toolbar</div>}
+						/>
+					</Suspense>
 				</div>
-			</Suspense>
-		</div>
+			}
+			off={
+				<div className={classNames('app', {}, [theme])}>
+					<Suspense fallback={<PageLoader />}>
+						<Navbar />
+						<div className="content-page">
+							<Sidebar />
+							<AppRouter />
+						</div>
+					</Suspense>
+				</div>
+			}
+		/>
 	);
 }
 
