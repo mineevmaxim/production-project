@@ -59,7 +59,7 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
 						{},
 						[className],
 					)}
-					border="round"
+					border="partial"
 				>
 					<HStack gap="8">
 						{viewTypes.map((viewType) => (

@@ -26,6 +26,18 @@
     &:hover {
         border: 1px solid var(--accent-redesigned);
     }
+
+    &.normal {
+        border: 2px solid var(--icon-redesigned);
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-redesigned);
+    }
+
+    &.success {
+        border: 2px solid var(--save-redesigned);
+    }
 }
 
 .filled {
@@ -38,6 +50,18 @@
         .addonLeft svg, .addonRight svg {
             color: var(accent-redesigned);
         }
+    }
+
+    &.normal {
+        background: var(--light-bg-redesigned);
+    }
+
+    &.error {
+        background: var(--cancel-redesigned);
+    }
+
+    &.success {
+        background: var(--save-redesigned);
     }
 }
 

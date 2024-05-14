@@ -7,7 +7,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
-import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
+import { Text as TextDeprecated, TextTheme } from '@/shared/ui/deprecated/Text';
 import { ProfileCard } from '@/entities/Profile';
 import {
 	DynamicModuleLoader,
@@ -22,6 +22,8 @@ import { getProfileValidateErrors } from '../../model/selectors/getProfileValida
 import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
 import { profileActions, profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from '../EditableProfileCardHeader/EditableProfileCardHeader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface EditableProfileCardProps {
 	className?: string;
@@ -123,11 +125,24 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
 				<EditableProfileCardHeader />
 				{validateErrors?.length &&
 					validateErrors.map((err) => (
-						<Text
-							key={err}
-							theme={TextTheme.ERROR}
-							text={validateErrorTranslates[err]}
-							data-testid="EditableProfileCard.Error"
+						<ToggleFeatures
+							feature="isAppRedesigned"
+							on={
+								<Text
+									key={err}
+									variant="error"
+									text={validateErrorTranslates[err]}
+									data-testid="EditableProfileCard.Error"
+								/>
+							}
+							off={
+								<TextDeprecated
+									key={err}
+									theme={TextTheme.ERROR}
+									text={validateErrorTranslates[err]}
+									data-testid="EditableProfileCard.Error"
+								/>
+							}
 						/>
 					))}
 				<ProfileCard
