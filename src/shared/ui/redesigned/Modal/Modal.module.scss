@@ -16,11 +16,23 @@
 .content {
     padding: 20px;
     border-radius: 12px;
-    background: var(--bg-color);
     transition: 0.3s transform;
     transform: scale(0.5);
     max-width: 60%;
     z-index: var(--modal-z-index);
+}
+
+.modalNew {
+    .content {
+        background: var(--light-bg-redesigned);
+
+    }
+}
+
+.modalOld {
+    .content {
+        background: var(--bg-color);
+    }
 }
 
 .opened {
