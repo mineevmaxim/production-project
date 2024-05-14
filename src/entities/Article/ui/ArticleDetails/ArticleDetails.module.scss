@@ -5,3 +5,9 @@
 .avatar {
     margin: 0 auto;
 }
+
+.image {
+    max-height: 420px;
+    object-fit: cover;
+    width: 100%;
+}
