@@ -27,6 +27,7 @@ export const updateFeatureFlags = createAsyncThunk<
 		);
 
 		setFeatureFlags(allFeatures);
+		window.location.reload();
 	} catch (e) {
 		console.log(e);
 		rejectWithValue('error');
