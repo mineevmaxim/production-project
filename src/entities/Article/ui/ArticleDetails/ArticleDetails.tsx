@@ -14,6 +14,7 @@ import {
 	TextSize,
 } from '@/shared/ui/deprecated/Text';
 import { Skeleton as SkeletonDeprecated } from '@/shared/ui/deprecated/Skeleton';
+import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
 import EyeIcon from '@/shared/assets/icons/eye-20-20.svg';
 import CalendarIcon from '@/shared/assets/icons/calendar-20-20.svg';
@@ -27,10 +28,9 @@ import {
 	getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails';
 import { renderBlock } from './renderBlock';
-import { ToggleFeatures } from '@/shared/lib/features';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { AppImage } from '@/shared/ui/redesigned/AppImage';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
 
 interface ArticleDetailsProps {
 	className?: string;
@@ -86,7 +86,13 @@ const Redesigned = () => {
 				className={cls.image}
 				height={420}
 				width="100%"
-				fallback={<Skeleton width="100%" height={420} border="16px" />}
+				fallback={
+					<SkeletonRedesigned
+						width="100%"
+						height={420}
+						border="16px"
+					/>
+				}
 			/>
 			{article?.blocks.map(renderBlock)}
 		</>
@@ -100,6 +106,12 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	const isLoading = useSelector(getArticleDetailsIsLoading);
 	const error = useSelector(getArticleDetailsError);
 
+	const Skeleton = toggleFeatures({
+		name: 'isAppRedesigned',
+		on: () => SkeletonRedesigned,
+		off: () => SkeletonDeprecated,
+	});
+
 	useEffect(() => {
 		if (__PROJECT__ !== 'storybook') {
 			dispatch(fetchArticleById(id));
@@ -110,39 +122,34 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 	if (isLoading) {
 		content = (
 			<>
-				<SkeletonDeprecated
+				<Skeleton
 					className={cls.avatar}
 					width={200}
 					height={200}
 					border="50%"
 				/>
-				<SkeletonDeprecated
-					className={cls.title}
-					width={300}
-					height={32}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width={600}
-					height={24}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width="100%"
-					height={200}
-				/>
-				<SkeletonDeprecated
-					className={cls.skeleton}
-					width="100%"
-					height={200}
-				/>
+				<Skeleton className={cls.title} width={300} height={32} />
+				<Skeleton className={cls.skeleton} width={600} height={24} />
+				<Skeleton className={cls.skeleton} width="100%" height={200} />
+				<Skeleton className={cls.skeleton} width="100%" height={200} />
 			</>
 		);
 	} else if (error) {
 		content = (
-			<TextDeprecated
-				align={TextAlign.CENTER}
-				title={t('Произошла ошибка при загрузке статьи.')}
+			<ToggleFeatures
+				feature="isAppRedesigned"
+				on={
+					<Text
+						align="center"
+						title={t('Произошла ошибка при загрузке статьи.')}
+					/>
+				}
+				off={
+					<TextDeprecated
+						align={TextAlign.CENTER}
+						title={t('Произошла ошибка при загрузке статьи.')}
+					/>
+				}
 			/>
 		);
 	} else {

@@ -900,6 +900,19 @@
       "rate": 5,
       "feedback": "",
       "id": "Vb-PjnF"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 3,
+      "feedback": "",
+      "id": "npeZKPP"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 4,
+      "id": "1FmWugg"
     }
   ],
   "profile-ratings": [
