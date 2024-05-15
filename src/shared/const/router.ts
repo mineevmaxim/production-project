@@ -9,7 +9,6 @@ export enum AppRoutes {
 	ADMIN_PANEL = 'admin_panel',
 	FORBIDDEN = 'forbidden',
 	SETTINGS = 'settings',
-	// last
 	NOT_FOUND = 'not_found',
 }
 
