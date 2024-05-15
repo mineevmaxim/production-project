@@ -1,6 +1,7 @@
 import React, {
 	ButtonHTMLAttributes,
-	memo,
+	ForwardedRef,
+	forwardRef,
 	ReactElement,
 	ReactNode,
 } from 'react';
@@ -43,44 +44,47 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: ButtonColor;
 }
 
-export const Button = memo((props: ButtonProps) => {
-	const {
-		className,
-		children,
-		variant = 'outline',
-		square,
-		disabled,
-		fullWidth,
-		size = 'm',
-		color = 'normal',
-		addonLeft,
-		addonRight,
-		...otherProps
-	} = props;
+export const Button = forwardRef(
+	(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+		const {
+			className,
+			children,
+			variant = 'outline',
+			square,
+			disabled,
+			fullWidth,
+			size = 'm',
+			color = 'normal',
+			addonLeft,
+			addonRight,
+			...otherProps
+		} = props;
 
-	const mods: Mods = {
-		[cls.square]: square,
-		[cls.disabled]: disabled,
-		[cls.fullWidth]: fullWidth,
-		[cls.withAddonLeft]: Boolean(addonLeft),
-		[cls.withAddonRight]: Boolean(addonRight),
-	};
+		const mods: Mods = {
+			[cls.square]: square,
+			[cls.disabled]: disabled,
+			[cls.fullWidth]: fullWidth,
+			[cls.withAddonLeft]: Boolean(addonLeft),
+			[cls.withAddonRight]: Boolean(addonRight),
+		};
 
-	return (
-		<button
-			type="button"
-			className={classNames(cls.Button, mods, [
-				className,
-				cls[variant],
-				cls[size],
-				cls[color],
-			])}
-			disabled={disabled}
-			{...otherProps}
-		>
-			<div className={cls.addonLeft}>{addonLeft}</div>
-			{children}
-			<div className={cls.addonRight}>{addonRight}</div>
-		</button>
-	);
-});
+		return (
+			<button
+				type="button"
+				className={classNames(cls.Button, mods, [
+					className,
+					cls[variant],
+					cls[size],
+					cls[color],
+				])}
+				disabled={disabled}
+				{...otherProps}
+				ref={ref}
+			>
+				<div className={cls.addonLeft}>{addonLeft}</div>
+				{children}
+				<div className={cls.addonRight}>{addonRight}</div>
+			</button>
+		);
+	},
+);
