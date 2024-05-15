@@ -37,7 +37,6 @@ module.exports = {
 		'no-unused-vars': 'off',
 		'react/require-default-props': 'off',
 		'react/react-in-jsx-scope': 'off',
-		'react/jsx-props-no-spreading': 'warn',
 		'react/function-component-definition': 'off',
 		'no-shadow': 'off',
 		'import/extensions': 'off',
@@ -94,6 +93,7 @@ module.exports = {
 			},
 		],
 		'react/no-unstable-nested-components': 'warn',
+		'react/jsx-props-no-spreading': 'off',
 	},
 	globals: {
 		__IS_DEV__: true,

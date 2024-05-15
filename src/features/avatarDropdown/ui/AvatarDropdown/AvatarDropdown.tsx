@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
@@ -41,31 +41,28 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
 		return null;
 	}
 
-	const items = useMemo(
-		() => [
-			...(isAdminPanelAvailable
-				? [
-						{
-							content: t('Админка'),
-							href: getRouteAdmin(),
-						},
-				  ]
-				: []),
-			{
-				content: t('Настройки'),
-				href: getRouteSettings(),
-			},
-			{
-				content: t('Профиль'),
-				href: getRouteProfile(authData.id),
-			},
-			{
-				content: t('Выйти'),
-				onClick: onLogout,
-			},
-		],
-		[authData.id, isAdminPanelAvailable, onLogout, t],
-	);
+	const items = [
+		...(isAdminPanelAvailable
+			? [
+					{
+						content: t('Админка'),
+						href: getRouteAdmin(),
+					},
+			  ]
+			: []),
+		{
+			content: t('Настройки'),
+			href: getRouteSettings(),
+		},
+		{
+			content: t('Профиль'),
+			href: getRouteProfile(authData.id),
+		},
+		{
+			content: t('Выйти'),
+			onClick: onLogout,
+		},
+	];
 
 	return (
 		<ToggleFeatures
