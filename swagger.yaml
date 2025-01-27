@@ -1,0 +1,687 @@
+openapi: 3.0.3
+info:
+  title: Production-project 
+  description: Документация основного API для production-project (продолжение проекта из курса Ulbi-TV "Продвинутый Frontend. В production на React").
+  version: 0.0.1
+servers: 
+  - url: http://localhost:5000/api/v1
+paths:
+  /profile:
+    get: 
+      summary: Метод получения списка профилей
+      tags:
+        - Profiles
+      operationId: getAllProfiles
+      responses:
+        200:
+          description: Успех. Список всех профилей
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profiles"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post: 
+      summary: Метод создания профиля
+      tags:
+        - Profiles
+      operationId: createProfile
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema: 
+              $ref: "#/components/schemas/Profile"
+      responses:
+        201:
+          description: Успех. В ответ возвращается созданный профиль.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /profile/{profile_id}:
+    parameters: 
+      - name: profile_id
+        in: path
+        required: true
+        schema: 
+          type: string
+        example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+    get: 
+      summary: Метод получения профиля по идентификатору
+      tags:
+        - Profiles
+      operationId: getProfileById
+      responses:
+        200:
+          description: Успех. Запрашиваемый профиль
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch: 
+      summary: Метод изменения профиля
+      tags:
+        - Profiles
+      operationId: updateProfileById
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema: 
+              $ref: "#/components/schemas/Profile"
+      responses:
+        201:
+          description: Успех. Измененный профиль
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete: 
+      summary: Метод удаления профиля
+      tags:
+        - Profiles
+      operationId: deleteProfileById
+      responses:
+        204:
+          description: Успех. 204 без контента = профиль удален, либо не существовал.
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /user:
+    get: 
+      summary: Метод получения списка пользователей
+      tags:
+        - Users
+      operationId: getAllUsers
+      responses:
+        200:
+          description: Успех. Список всех пользователей
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post: 
+      summary: Метод создания пользователя
+      tags:
+        - Users
+      operationId: createUser
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema: 
+              $ref: "#/components/schemas/User"
+      responses:
+        201:
+          description: Успех. В ответ возвращается созданный пользователь.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Profile"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  
+  /user/{user_id}:
+    parameters: 
+      - name: user_id
+        in: path
+        required: true
+        schema: 
+          type: string
+        example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+    get: 
+      summary: Метод получения пользователя по идентификатору
+      tags:
+        - Users
+      operationId: getUserById
+      responses:
+        200:
+          description: Успех. Запрашиваемый пользователь
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch: 
+      summary: Метод изменения пользователя
+      tags:
+        - Users
+      operationId: updateUserById
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/User"
+      responses:
+        201:
+          description: Успех. Измененный пользователь
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete: 
+      summary: Метод удаления пользователя
+      tags:
+        - Users
+      operationId: deleteUserById
+      responses:
+        204:
+          description: Успех. 204 без контента = пользователь удален, либо не существовал.
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /article_comment:
+    get: 
+      summary: Метод получения списка пользователей
+      tags:
+        - Article-comment
+      operationId: getAllArticleComments
+      responses:
+        200:
+          description: Успех. Список всех комментариев к статье
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article-comments'
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post: 
+      summary: Метод создания пользователя
+      tags:
+        - Article-comment
+      operationId: createArticleComment
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema: 
+              $ref: '#/components/schemas/Article-comment'
+      responses:
+        201:
+          description: Успех. В ответ возвращается созданный комментарий к статье.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article-comment"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  
+  /article_comment/{comment_id}:
+    parameters: 
+      - name: comment_id
+        in: path
+        required: true
+        schema: 
+          type: string
+        example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+    get: 
+      summary: Метод получения комментария к статье по идентификатору
+      tags:
+        - Article-comment
+      operationId: getArticleCommentById
+      responses:
+        200:
+          description: Успех. Запрашиваемый комментарий к статье
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article-comment"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch: 
+      summary: Метод изменения комментария к статье
+      tags:
+        - Article-comment
+      operationId: updateArticleCommentById
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/Article-comment"
+      responses:
+        201:
+          description: Успех. Измененный пользователь
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article-comment"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete: 
+      summary: Метод удаления комментария к статье
+      tags:
+        - Article-comment
+      operationId: deleteArticleCommentById
+      responses:
+        204:
+          description: Успех. 204 без контента = пользователь удален, либо не существовал.
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /article:
+    get: 
+      summary: Метод получения списка пользователей
+      tags:
+        - Article
+      operationId: getAllArticles
+      responses:
+        200:
+          description: Успех. Список всех комментариев к статье
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Articles'
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post: 
+      summary: Метод создания пользователя
+      tags:
+        - Article
+      operationId: createArticles
+      requestBody: 
+        required: true
+        content:
+          application/json: 
+            schema: 
+              $ref: '#/components/schemas/Article'
+      responses:
+        201:
+          description: Успех. В ответ возвращается созданный комментарий к статье.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  
+  /article/{article_id}:
+    parameters: 
+      - name: article_id
+        in: path
+        required: true
+        schema: 
+          type: string
+        example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+    get: 
+      summary: Метод получения комментария к статье по идентификатору
+      tags:
+        - Article
+      operationId: getArticleById
+      responses:
+        200:
+          description: Успех. Запрашиваемый комментарий к статье
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch: 
+      summary: Метод изменения комментария к статье
+      tags:
+        - Article
+      operationId: updateArticleById
+      requestBody: 
+        required: true
+        content:
+          application/json:
+            schema: 
+              $ref: "#/components/schemas/Article"
+      responses:
+        201:
+          description: Успех. Измененный пользователь
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Article"
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete: 
+      summary: Метод удаления комментария к статье
+      tags:
+        - Article
+      operationId: deleteArticleById
+      responses:
+        204:
+          description: Успех. 204 без контента = пользователь удален, либо не существовал.
+        default:
+          description: Что-то пошло не так
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Profile:
+      type: object
+      required:
+        - firstname
+        - lastname
+        - age
+        - currency
+        - country
+        - city
+        - username
+      properties:
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        firstname:
+          type: string
+          example: John
+        lastname:
+          type: string
+          example: Doe
+        age:
+          type: number
+          example: 21
+        currency:
+          type: string
+          enum:
+            - RUB
+            - USD
+            - EUR
+          example: RUB
+        country:
+          type: string
+          enum:
+            - Armenia
+            - Russia
+            - Belarus
+            - Kazakhstan
+            - Ukraine
+          example: Russia
+        city:
+          type: string
+          example: Yekaterinburg
+        username:
+          type: string
+          example: testuser
+        avatar:
+          type: string
+          example: https://cakeshop.com.ua/images/AcpSe7kFpmzMfgJUwhyXbNbja_gwkleunua5ZVM9jTQ/h:5000/bG9jYWw/6Ly8vY2FrZXNob3AuY29tLnVhL3B1YmxpY19odG1sL3N0b3JhZ2UvYXBwL3B1YmxpYy9pbWcvcHJvZHVjdC81NzEzXzEuanBn
+    Profiles:
+      type: array
+      items: 
+        $ref: "#/components/schemas/Profile"
+    User:
+      type: object
+      required:
+        - username
+        - password
+        - role
+      properties:
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        username:
+          type: string
+          example: user
+        password:
+          type: string
+          example: 123abc
+        role:
+          type: string
+          example: ADMIN
+          enum:
+            - ADMIN
+            - USER
+        jsonSettings:
+          $ref: '#/components/schemas/Json-settings'
+        features:
+          $ref: '#/components/schemas/Feature-flags'
+        avatar:
+          type: string
+          example: https://cakeshop.com.ua/images/AcpSe7kFpmzMfgJUwhyXbNbja_gwkleunua5ZVM9jTQ/h:5000/bG9jYWw/6Ly8vY2FrZXNob3AuY29tLnVhL3B1YmxpY19odG1sL3N0b3JhZ2UvYXBwL3B1YmxpYy9pbWcvcHJvZHVjdC81NzEzXzEuanBn
+    Users:
+      type: array
+      items: 
+        $ref: "#/components/schemas/User"
+    Article-comment:
+      type: object
+      required: 
+        - text
+        - articleId
+        - userId
+      properties: 
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        text:
+          type: string
+          example: Очень интересная статья!
+        articleId:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        userId:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+    Article-comments:
+      type: array
+      items: 
+        $ref: '#/components/schemas/Article-comment'
+    Article: 
+      type: object
+      required: 
+        - title
+        - user
+        - img
+        - type
+        - blocks
+      properties: 
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        title:
+          type: string
+          example: Очень интересная статья!
+        subtitle:
+          type: string
+          example: Подзаголовок!
+        user:
+          $ref: '#/components/schemas/User'
+        img:
+          type: string
+          example: https://cakeshop.com.ua/images/AcpSe7kFpmzMfgJUwhyXbNbja_gwkleunua5ZVM9jTQ/h:5000/bG9jYWw/6Ly8vY2FrZXNob3AuY29tLnVhL3B1YmxpY19odG1sL3N0b3JhZ2UvYXBwL3B1YmxpYy9pbWcvcHJvZHVjdC81NzEzXzEuanBn
+        views:
+          type: number
+          example: 1443
+        createdAt:
+          type: string
+          format: '2009-06-15T13:45:30'
+          example: 2009-06-15T13:45:30
+        type:
+          description: Список типов статьи. Может быть как несколько, так и ни одного
+          type: array
+          items: 
+              $ref: '#/components/schemas/ArticleType'
+        blocks:
+          description: Список блоков статьи. Может быть как несколько, так и ни одного
+          type: array
+          items: 
+            anyOf: 
+              - $ref: '#/components/schemas/ArticleCodeBlock'
+              - $ref: '#/components/schemas/ArticleTextBlock'
+              - $ref: '#/components/schemas/ArticleImageBlock'
+    Articles:
+      type: array
+      items: 
+        $ref: "#/components/schemas/Article"
+    Feature-flags:
+      type: object
+      properties: 
+        isAppRedesigned:
+          type: boolean
+          example: false
+          default: true
+    Json-settings:
+      type: object
+      properties: 
+        isArticlesPageWasOpened:
+          type: boolean
+          example: true
+          default: false
+        theme:
+          type: string
+          enum: 
+            - app_light_theme
+            - app_dark_theme
+            - app_orange_theme
+          example: app_dark_theme
+          default: app_light_theme
+    ArticleTextBlock:
+      type: object
+      required:
+        - id
+        - type
+        - paragraphs
+      properties: 
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        type:
+          $ref: '#/components/schemas/ArticleBlockType'
+        paragraphs:
+          type: array
+          example: ["some text", "paragraph 2"]
+        title:
+          type: string
+          example: "parapraph header. optional"
+    ArticleImageBlock:
+      type: object
+      required:
+        - id
+        - type
+        - src
+        - title
+      properties: 
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        type:
+          $ref: '#/components/schemas/ArticleBlockType'
+        src:
+          type: string
+          example: https://cakeshop.com.ua/images/AcpSe7kFpmzMfgJUwhyXbNbja_gwkleunua5ZVM9jTQ/h:5000/bG9jYWw/6Ly8vY2FrZXNob3AuY29tLnVhL3B1YmxpY19odG1sL3N0b3JhZ2UvYXBwL3B1YmxpYy9pbWcvcHJvZHVjdC81NzEzXzEuanBn
+        title:
+          type: string
+          example: "image description. required"
+    ArticleCodeBlock:
+      type: object
+      required:
+        - id
+        - type
+        - code
+      properties: 
+        id:
+          type: string
+          example: 0758ad4c-d97c-441b-88b3-10f899921ba4
+        type:
+          $ref: '#/components/schemas/ArticleBlockType'
+        code:
+          type: string
+          example: 'Console.WriteLine("Hello, World!")'
+    ArticleBlockType:
+      type: string
+      enum: 
+        - code
+        - image
+        - text
+    ArticleType:
+      type: string
+      enum:
+        - ALL
+        - IT
+        - SCIENCE
+        - ECONOMICS
+    Error:
+      type: object
+      example:
+        detail: something were wrong. try again
