@@ -53,7 +53,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 					)}
 				>
 					<AppLogo
-						size={collapsed ? 30 : 50}
+						size={collapsed ? 50 : 100}
 						className={cls.appLogo}
 					/>
 					<VStack max role="navigation" gap="8" className={cls.items}>
